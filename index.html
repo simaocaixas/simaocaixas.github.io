@@ -1,38 +1,97 @@
 <!DOCTYPE html>
-<html>  
-<h1> CV </h1>
-<h2> Simão Caixas </h2>
-<style> 
-        .container {
-            display: flex;
-        }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Jorney</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+  <style>
+    .avatar {
+        float: right;
+        width: 265px;
+        height: 265px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-left: 1rem;
+        object-position: center top;
+    }
+    header::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 2rem 0 1rem;
+    }
+    .tabs button.active {
+    background: var(--links);
+    color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/fixtures/imgs/me.jpg" alt="me" width="150" class="avatar">
+    <h1>Who am I and What is this?</h1>
+    <p>
+    Hi, I'm Simão, a Computer Science Master's student at
+    <a href="https://tecnico.ulisboa.pt">Instituto Superior Técnico</a> in Portugal.
+    I'm also a teaching assistant for Operating Systems at DEI.
+    </p>
+    <p>
+    During my bachelor's I got curious about a lot of topics, but distributed systems
+    was the one that kept pulling me back. The Master's at IST is very flexible,
+    which is great, but it also makes it easy to drift between subjects.
+    I made this page to stay focused and keep track of what I learn on my way into
+    distributed and decentralized systems.
+    </p>
+    <nav>
+      <a href="https://github.com/simaocaixas">GitHub</a>
+    </nav>
+    </header>
 
-        .left {
-            flex: 2.5;
-        }
+    <nav class="tabs">
+    <button data-tab="papers" class="active">Papers</button>
+    <button data-tab="books">Books</button>
+    <button data-tab="projects">Projects</button>
+    </nav>
 
-        .right-contacto {
-            flex: 1;
-        }
-</style>
-    <body>
-        <div class="container">
-            <div class="left">
-            <h2>Informação</h2>
-            </div>
-            <div class="right-contacto">
-            <h2>Contacto:</h2>
-            <p>simaocaixas@tecnico.ulisboa.pt <br>
-            <a href="https://github.com/simaocaixas" target="_blank">https://github.com/simaocaixas</a>
-            </p>
-            </div>
-        </div>
-    </body>
+    <section id="papers" class="tab-panel">
+    <h2>Papers</h2>
+    <p>TODO</p>
+    <ul>
+    </ul>
+    </section>
 
+    <section id="books" class="tab-panel" hidden>
+    <h2>Books</h2>
+    <p>TODO</p>
+    </section>
 
+    <section id="projects" class="tab-panel" hidden>
+    <h2>Projects</h2>
+    <p>TODO</p>
+    </section>
 
-</p1>
+    <script>
+    const buttons = document.querySelectorAll('.tabs button');
+    const panels  = document.querySelectorAll('.tab-panel');
 
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.hidden = true);
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).hidden = false;
+        });
+    });
+    </script>
+
+    <footer>
+    <p>Last updated: November 2026</p>
+  </footer>
+</body>
 </html>
-
-
